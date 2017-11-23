@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="XeberlerModelStoreContainer" CdmEntityContainer="XeberlerEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="XeberlerModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cat_name" ColumnName="cat_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="XeberlerModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="news_title" ColumnName="news_title" />
+          <ScalarProperty Name="news_desc" ColumnName="news_desc" />
+          <ScalarProperty Name="news_full" ColumnName="news_full" />
+          <ScalarProperty Name="news_category" ColumnName="news_category" />
+          <ScalarProperty Name="news_img" ColumnName="news_img" />
+          <ScalarProperty Name="news_user" ColumnName="news_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="XeberlerModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_surname" ColumnName="user_surname" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_login" ColumnName="user_login" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_is_login" ColumnName="user_is_login" />
+          <ScalarProperty Name="user_level" ColumnName="user_level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_Level">
+      <EntityTypeMapping TypeName="XeberlerModel.Users_Level">
+        <MappingFragment StoreEntitySet="Users_Level">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="level_name" ColumnName="level_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sliders">
+      <EntityTypeMapping TypeName="XeberlerModel.Slider">
+        <MappingFragment StoreEntitySet="Sliders">
+          <ScalarProperty Name="slider_img" ColumnName="slider_img" />
+          <ScalarProperty Name="slider_title" ColumnName="slider_title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

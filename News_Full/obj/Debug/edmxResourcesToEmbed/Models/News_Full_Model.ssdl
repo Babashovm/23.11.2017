@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="XeberlerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="cat_name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="news_title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="news_desc" Type="nvarchar(max)" />
+    <Property Name="news_full" Type="text" />
+    <Property Name="news_category" Type="int" Nullable="false" />
+    <Property Name="news_img" Type="nvarchar" MaxLength="80" />
+    <Property Name="news_user" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sliders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="slider_title" Type="nvarchar" MaxLength="50" />
+    <Property Name="slider_img" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="user_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_email" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_is_login" Type="int" Nullable="false" />
+    <Property Name="user_level" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users_Level">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="level_name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="News_fk0">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="news_category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="News_fk1">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="news_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Users_fk0">
+    <End Role="Users_Level" Type="Self.Users_Level" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users_Level">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="user_level" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="XeberlerModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sliders" EntityType="Self.Sliders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users_Level" EntityType="Self.Users_Level" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="News_fk0" Association="Self.News_fk0">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="News_fk1" Association="Self.News_fk1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="Users_fk0" Association="Self.Users_fk0">
+      <End Role="Users_Level" EntitySet="Users_Level" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
